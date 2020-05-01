@@ -14,24 +14,24 @@ import com.amazonaws.services.sqs.AmazonSQSAsyncClientBuilder;
 @Configuration
 public class SQSConfig {
 
-	@Value("${cloud.aws.region.static}")
-	private String region;
+    @Value("${cloud.aws.region.static}")
+    private String region;
 
-	@Value("${cloud.aws.credenctials.access-key}")
-	private String awsAccessKey;
+    @Value("${cloud.aws.credenctials.access-key}")
+    private String awsAccessKey;
 
-	@Value("${cloud.aws.credenctials.secret-key}")
-	private String awsSecretKey;
+    @Value("${cloud.aws.credenctials.secret-key}")
+    private String awsSecretKey;
 
-	@Bean
-	public QueueMessagingTemplate queueMessagingTemplate() {
-		return new QueueMessagingTemplate(amazonSQSAsync());
-	}
+    @Bean
+    public QueueMessagingTemplate queueMessagingTemplate() {
+        return new QueueMessagingTemplate(amazonSQSAsync());
+    }
 
-	public AmazonSQSAsync amazonSQSAsync() {
-		return AmazonSQSAsyncClientBuilder.standard().withRegion(Regions.US_EAST_1)
-				.withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(awsAccessKey, awsSecretKey)))
-				.build();
-	}
+    public AmazonSQSAsync amazonSQSAsync() {
+        return AmazonSQSAsyncClientBuilder.standard().withRegion(Regions.US_EAST_1)
+                .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(awsAccessKey, awsSecretKey)))
+                .build();
+    }
 
 }

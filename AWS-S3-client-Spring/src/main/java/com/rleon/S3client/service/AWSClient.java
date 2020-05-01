@@ -15,7 +15,7 @@ public class AWSClient {
     @Autowired
     Properties properties;
 
-    private void initAws(){
+    private void initAws() {
         AWSCredentials credentials = new BasicAWSCredentials(properties.getAccesskey(), properties.getSecretkey());
     }
 

@@ -15,23 +15,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/sqs")
 public class SQSController {
 
-	private static final Logger LOG = LoggerFactory.getLogger(SQSController.class);
-	
-	private QueueMessagingTemplate queueMessagingTemplate;
-	
-	private SQSController(QueueMessagingTemplate queueMessagingTemplate) {
-		this.queueMessagingTemplate = queueMessagingTemplate;
-	}
-	
-	
-	@Value("${cloud.aws.end-point.uri}")
-	private String sqsEndPoint;
-	
-	@GetMapping("/sendMessage")
-	public void sendMessage() {
-		LOG.info("Iniciando Envio");
-		queueMessagingTemplate.send(sqsEndPoint, MessageBuilder.withPayload("hellooo this in my sqs first test").build());
-	}
-	
-	
+    private static final Logger LOG = LoggerFactory.getLogger(SQSController.class);
+
+    private QueueMessagingTemplate queueMessagingTemplate;
+
+    private SQSController(QueueMessagingTemplate queueMessagingTemplate) {
+        this.queueMessagingTemplate = queueMessagingTemplate;
+    }
+
+
+    @Value("${cloud.aws.end-point.uri}")
+    private String sqsEndPoint;
+
+    @GetMapping("/sendMessage")
+    public void sendMessage() {
+        LOG.info("Iniciando Envio");
+        queueMessagingTemplate.send(sqsEndPoint, MessageBuilder.withPayload("hellooo this in my sqs first test").build());
+    }
+
+
 }

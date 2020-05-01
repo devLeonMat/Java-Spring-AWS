@@ -9,13 +9,12 @@ public class AWSS3Service {
         this.s3Client = amazonS3Client;
     }
 
-    /**  validate bucket exist  **/
-    public boolean existBucket(String bucketName){
+    /**
+     * validate bucket exist
+     **/
+    public boolean existBucket(String bucketName) {
         return s3Client.doesBucketExistV2(bucketName);
     }
-
-
-
 
 
 }
